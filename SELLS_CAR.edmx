@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище SELLS_CARModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CAR">
+          <Key>
+            <PropertyRef Name="ID_CARNAME" />
+          </Key>
+          <Property Name="ID_CARNAME" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME_CAR" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="MODEL_CAR" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="COLOR_CAR" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="NUMBER_CAR" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GLOBAL_INFO">
+          <Key>
+            <PropertyRef Name="ID_GLOBAL_INFO" />
+          </Key>
+          <Property Name="ID_GLOBAL_INFO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CARNAME_ID" Type="int" Nullable="false" />
+          <Property Name="WHERE_THE_CAR_COMES_FROM_ID" Type="int" Nullable="false" />
+          <Property Name="SUPPLIER_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SUPPLIER">
+          <Key>
+            <PropertyRef Name="ID_SUPPLIER" />
+          </Key>
+          <Property Name="ID_SUPPLIER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SURNAME" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="SUPPLIER_NAME" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="PATRONYMIC" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WHERE_THE_CAR_COMES_FROM">
+          <Key>
+            <PropertyRef Name="ID_WHERE_THE_CAR_COMES_FROM" />
+          </Key>
+          <Property Name="ID_WHERE_THE_CAR_COMES_FROM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLE" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__GLOBAL_IN__CARNA__19DFD96B">
+          <End Role="CAR" Type="Self.CAR" Multiplicity="1" />
+          <End Role="GLOBAL_INFO" Type="Self.GLOBAL_INFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAR">
+              <PropertyRef Name="ID_CARNAME" />
+            </Principal>
+            <Dependent Role="GLOBAL_INFO">
+              <PropertyRef Name="CARNAME_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GLOBAL_IN__SUPPL__1BC821DD">
+          <End Role="SUPPLIER" Type="Self.SUPPLIER" Multiplicity="1" />
+          <End Role="GLOBAL_INFO" Type="Self.GLOBAL_INFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUPPLIER">
+              <PropertyRef Name="ID_SUPPLIER" />
+            </Principal>
+            <Dependent Role="GLOBAL_INFO">
+              <PropertyRef Name="SUPPLIER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GLOBAL_IN__WHERE__1AD3FDA4">
+          <End Role="WHERE_THE_CAR_COMES_FROM" Type="Self.WHERE_THE_CAR_COMES_FROM" Multiplicity="1" />
+          <End Role="GLOBAL_INFO" Type="Self.GLOBAL_INFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WHERE_THE_CAR_COMES_FROM">
+              <PropertyRef Name="ID_WHERE_THE_CAR_COMES_FROM" />
+            </Principal>
+            <Dependent Role="GLOBAL_INFO">
+              <PropertyRef Name="WHERE_THE_CAR_COMES_FROM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище SELLS_CARModelContainer">
+          <EntitySet Name="CAR" EntityType="Self.CAR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GLOBAL_INFO" EntityType="Self.GLOBAL_INFO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SUPPLIER" EntityType="Self.SUPPLIER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WHERE_THE_CAR_COMES_FROM" EntityType="Self.WHERE_THE_CAR_COMES_FROM" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__GLOBAL_IN__CARNA__19DFD96B" Association="Self.FK__GLOBAL_IN__CARNA__19DFD96B">
+            <End Role="CAR" EntitySet="CAR" />
+            <End Role="GLOBAL_INFO" EntitySet="GLOBAL_INFO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GLOBAL_IN__SUPPL__1BC821DD" Association="Self.FK__GLOBAL_IN__SUPPL__1BC821DD">
+            <End Role="SUPPLIER" EntitySet="SUPPLIER" />
+            <End Role="GLOBAL_INFO" EntitySet="GLOBAL_INFO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GLOBAL_IN__WHERE__1AD3FDA4" Association="Self.FK__GLOBAL_IN__WHERE__1AD3FDA4">
+            <End Role="WHERE_THE_CAR_COMES_FROM" EntitySet="WHERE_THE_CAR_COMES_FROM" />
+            <End Role="GLOBAL_INFO" EntitySet="GLOBAL_INFO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SELLS_CARModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CAR">
+          <Key>
+            <PropertyRef Name="ID_CARNAME" />
+          </Key>
+          <Property Name="ID_CARNAME" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME_CAR" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MODEL_CAR" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COLOR_CAR" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NUMBER_CAR" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="GLOBAL_INFO" Relationship="SELLS_CARModel.FK__GLOBAL_IN__CARNA__19DFD96B" FromRole="CAR" ToRole="GLOBAL_INFO" />
+        </EntityType>
+        <EntityType Name="SUPPLIER">
+          <Key>
+            <PropertyRef Name="ID_SUPPLIER" />
+          </Key>
+          <Property Name="ID_SUPPLIER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SURNAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SUPPLIER_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PATRONYMIC" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="GLOBAL_INFO" Relationship="SELLS_CARModel.FK__GLOBAL_IN__SUPPL__1BC821DD" FromRole="SUPPLIER" ToRole="GLOBAL_INFO" />
+        </EntityType>
+        <EntityType Name="WHERE_THE_CAR_COMES_FROM">
+          <Key>
+            <PropertyRef Name="ID_WHERE_THE_CAR_COMES_FROM" />
+          </Key>
+          <Property Name="ID_WHERE_THE_CAR_COMES_FROM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="GLOBAL_INFO" Relationship="SELLS_CARModel.FK__GLOBAL_IN__WHERE__1AD3FDA4" FromRole="WHERE_THE_CAR_COMES_FROM" ToRole="GLOBAL_INFO" />
+        </EntityType>
+        <EntityContainer Name="SELLS_CAREntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CAR" EntityType="Self.CAR" />
+          <EntitySet Name="SUPPLIER" EntityType="Self.SUPPLIER" />
+          <EntitySet Name="WHERE_THE_CAR_COMES_FROM" EntityType="Self.WHERE_THE_CAR_COMES_FROM" />
+          <EntitySet Name="GLOBAL_INFO" EntityType="SELLS_CARModel.GLOBAL_INFO" />
+          <AssociationSet Name="FK__GLOBAL_IN__CARNA__19DFD96B" Association="SELLS_CARModel.FK__GLOBAL_IN__CARNA__19DFD96B">
+            <End Role="CAR" EntitySet="CAR" />
+            <End Role="GLOBAL_INFO" EntitySet="GLOBAL_INFO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GLOBAL_IN__SUPPL__1BC821DD" Association="SELLS_CARModel.FK__GLOBAL_IN__SUPPL__1BC821DD">
+            <End Role="SUPPLIER" EntitySet="SUPPLIER" />
+            <End Role="GLOBAL_INFO" EntitySet="GLOBAL_INFO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GLOBAL_IN__WHERE__1AD3FDA4" Association="SELLS_CARModel.FK__GLOBAL_IN__WHERE__1AD3FDA4">
+            <End Role="WHERE_THE_CAR_COMES_FROM" EntitySet="WHERE_THE_CAR_COMES_FROM" />
+            <End Role="GLOBAL_INFO" EntitySet="GLOBAL_INFO" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="GLOBAL_INFO">
+          <Key>
+            <PropertyRef Name="ID_GLOBAL_INFO" />
+          </Key>
+          <Property Name="ID_GLOBAL_INFO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CARNAME_ID" Type="Int32" Nullable="false" />
+          <Property Name="WHERE_THE_CAR_COMES_FROM_ID" Type="Int32" Nullable="false" />
+          <Property Name="SUPPLIER_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CAR" Relationship="SELLS_CARModel.FK__GLOBAL_IN__CARNA__19DFD96B" FromRole="GLOBAL_INFO" ToRole="CAR" />
+          <NavigationProperty Name="SUPPLIER" Relationship="SELLS_CARModel.FK__GLOBAL_IN__SUPPL__1BC821DD" FromRole="GLOBAL_INFO" ToRole="SUPPLIER" />
+          <NavigationProperty Name="WHERE_THE_CAR_COMES_FROM" Relationship="SELLS_CARModel.FK__GLOBAL_IN__WHERE__1AD3FDA4" FromRole="GLOBAL_INFO" ToRole="WHERE_THE_CAR_COMES_FROM" />
+        </EntityType>
+        <Association Name="FK__GLOBAL_IN__CARNA__19DFD96B">
+          <End Type="SELLS_CARModel.CAR" Role="CAR" Multiplicity="1" />
+          <End Type="SELLS_CARModel.GLOBAL_INFO" Role="GLOBAL_INFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAR">
+              <PropertyRef Name="ID_CARNAME" />
+            </Principal>
+            <Dependent Role="GLOBAL_INFO">
+              <PropertyRef Name="CARNAME_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GLOBAL_IN__SUPPL__1BC821DD">
+          <End Type="SELLS_CARModel.SUPPLIER" Role="SUPPLIER" Multiplicity="1" />
+          <End Type="SELLS_CARModel.GLOBAL_INFO" Role="GLOBAL_INFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUPPLIER">
+              <PropertyRef Name="ID_SUPPLIER" />
+            </Principal>
+            <Dependent Role="GLOBAL_INFO">
+              <PropertyRef Name="SUPPLIER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GLOBAL_IN__WHERE__1AD3FDA4">
+          <End Type="SELLS_CARModel.WHERE_THE_CAR_COMES_FROM" Role="WHERE_THE_CAR_COMES_FROM" Multiplicity="1" />
+          <End Type="SELLS_CARModel.GLOBAL_INFO" Role="GLOBAL_INFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WHERE_THE_CAR_COMES_FROM">
+              <PropertyRef Name="ID_WHERE_THE_CAR_COMES_FROM" />
+            </Principal>
+            <Dependent Role="GLOBAL_INFO">
+              <PropertyRef Name="WHERE_THE_CAR_COMES_FROM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SELLS_CARModelContainer" CdmEntityContainer="SELLS_CAREntities">
+          <EntitySetMapping Name="CAR">
+            <EntityTypeMapping TypeName="SELLS_CARModel.CAR">
+              <MappingFragment StoreEntitySet="CAR">
+                <ScalarProperty Name="ID_CARNAME" ColumnName="ID_CARNAME" />
+                <ScalarProperty Name="NAME_CAR" ColumnName="NAME_CAR" />
+                <ScalarProperty Name="MODEL_CAR" ColumnName="MODEL_CAR" />
+                <ScalarProperty Name="COLOR_CAR" ColumnName="COLOR_CAR" />
+                <ScalarProperty Name="NUMBER_CAR" ColumnName="NUMBER_CAR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUPPLIER">
+            <EntityTypeMapping TypeName="SELLS_CARModel.SUPPLIER">
+              <MappingFragment StoreEntitySet="SUPPLIER">
+                <ScalarProperty Name="ID_SUPPLIER" ColumnName="ID_SUPPLIER" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="SUPPLIER_NAME" ColumnName="SUPPLIER_NAME" />
+                <ScalarProperty Name="PATRONYMIC" ColumnName="PATRONYMIC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WHERE_THE_CAR_COMES_FROM">
+            <EntityTypeMapping TypeName="SELLS_CARModel.WHERE_THE_CAR_COMES_FROM">
+              <MappingFragment StoreEntitySet="WHERE_THE_CAR_COMES_FROM">
+                <ScalarProperty Name="ID_WHERE_THE_CAR_COMES_FROM" ColumnName="ID_WHERE_THE_CAR_COMES_FROM" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GLOBAL_INFO">
+            <EntityTypeMapping TypeName="SELLS_CARModel.GLOBAL_INFO">
+              <MappingFragment StoreEntitySet="GLOBAL_INFO">
+                <ScalarProperty Name="SUPPLIER_ID" ColumnName="SUPPLIER_ID" />
+                <ScalarProperty Name="WHERE_THE_CAR_COMES_FROM_ID" ColumnName="WHERE_THE_CAR_COMES_FROM_ID" />
+                <ScalarProperty Name="CARNAME_ID" ColumnName="CARNAME_ID" />
+                <ScalarProperty Name="ID_GLOBAL_INFO" ColumnName="ID_GLOBAL_INFO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

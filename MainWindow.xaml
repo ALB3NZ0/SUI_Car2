@@ -1,0 +1,18 @@
+﻿<Window x:Class="CAR_BD2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CAR_BD2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="avto"/>
+        <Button Content="Автомобили" Margin="499,148,76,223" Click="Button_Click_1"/>
+        <Button Content="Поставщик" Margin="499,73,76,291" Click="Button_Click"/>
+        <Button Content="Откуда привезли" Margin="499,216,76,151" Click="Button_Click_2"/>
+        <Button Content="Поиск информации по ID" Margin="499,288,76,80" Click="Button_Click_3"/>
+        <TextBlock Text="Добро пожаловать в автосалон." Margin="20,21,504,338"/>
+        <TextBlock Text="Здесь вы можете посмтореть:" Margin="515,21,31,328" />
+    </Grid>
+</Window>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f730a09e80364bb48f525f59784a230f" Name="Diagram1">
+        <EntityTypeShape EntityType="SELLS_CARModel.CAR" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SELLS_CARModel.SUPPLIER" Width="1.5" PointX="8.875" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SELLS_CARModel.WHERE_THE_CAR_COMES_FROM" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SELLS_CARModel.GLOBAL_INFO" Width="1.5" PointX="5" PointY="3.625" />
+        <AssociationConnector Association="SELLS_CARModel.FK__GLOBAL_IN__CARNA__19DFD96B" />
+        <AssociationConnector Association="SELLS_CARModel.FK__GLOBAL_IN__SUPPL__1BC821DD" />
+        <AssociationConnector Association="SELLS_CARModel.FK__GLOBAL_IN__WHERE__1AD3FDA4" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
